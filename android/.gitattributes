@@ -1,0 +1,3 @@
+# Direct flutter
+*.flutter linguist-detectable=true
+*.* linguist-detectable=false
