@@ -10,7 +10,18 @@ class CryptoCoinsRepository implements AbstractCoinsRepository {
     required this.cryptoCoinsBox,
   });
 
-  final Dio dio;
+static const String baseUrl = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,YFI,PAXG,XAUT,CBETH,ETH,STETH,BETH,ETH2,BNB,XMR,MONAV,AUTO,BCH,SOL,AID,CAG,DOV&tsyms=USD';
+static const Duration  receiveTimeout = Duration (seconds: 3);
+static const Duration  connectionTimeout = Duration (seconds: 3);
+
+ static  BaseOptions options = BaseOptions(
+  baseUrl: baseUrl,
+  connectTimeout: connectionTimeout,
+  receiveTimeout: receiveTimeout,
+  
+);
+Dio dio = Dio(options); 
+//final Dio dio;
   final Box<CryptoCoin> cryptoCoinsBox;
   
   @override
@@ -29,7 +40,10 @@ cryptoCoinsList.sort((a,b) => b.details.priceInUSD.compareTo(a.details.priceInUS
     return cryptoCoinsList;
   }
 
+
+
   Future<List<CryptoCoin>> _fetchCoinsListFromApi() async {
+
     final response = await dio.get(
         'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,YFI,PAXG,XAUT,CBETH,ETH,STETH,BETH,ETH2,BNB,XMR,MONAV,AUTO,BCH,SOL,AID,CAG,DOV&tsyms=USD');
     
