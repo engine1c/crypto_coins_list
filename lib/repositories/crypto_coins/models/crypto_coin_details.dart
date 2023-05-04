@@ -1,7 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:hive/hive.dart';
 
 part 'crypto_coin_details.g.dart';
+// flutter pub run build_runner build --delete-conflicting-outputs
+
+@HiveType(typeId: 1)
 
 @JsonSerializable()
 class CryptoCoinDetail extends Equatable {
@@ -14,9 +18,11 @@ class CryptoCoinDetail extends Equatable {
     required this.low24Hours,
   });
 
+@HiveField(0) 
   @JsonKey(name: 'TOSYMBOL')
   final String toSymbol;
-
+  
+@HiveField(1)
   @JsonKey(
     name: 'LASTUPDATE',
     toJson: _dateTimeToJson,
@@ -24,15 +30,19 @@ class CryptoCoinDetail extends Equatable {
   )
   final DateTime lastUpdate;
 
+@HiveField(2)
   @JsonKey(name: 'HIGH24HOUR')
   final double hight24Hour;
 
+@HiveField(3)
   @JsonKey(name: 'LOW24HOUR')
   final double low24Hours;
 
+@HiveField(4)
   @JsonKey(name: 'PRICE')
   final double priceInUSD;
 
+@HiveField(5)
   @JsonKey(name: 'IMAGEURL')
   final String imageUrl;
 
@@ -58,3 +68,5 @@ class CryptoCoinDetail extends Equatable {
         imageUrl,
       ];
 }
+
+// flutter pub run build_runner build --delete-conflicting-outputs

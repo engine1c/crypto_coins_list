@@ -1,5 +1,11 @@
 import 'package:crypto_coins_list/repositories/crypto_coins/models/crypto_coin_details.dart';
 import 'package:equatable/equatable.dart';
+import 'package:hive/hive.dart';
+
+part 'crypto_coin.g.dart';
+// flutter pub run build_runner build --delete-conflicting-outputs
+
+@HiveType(typeId: 2)
 
 class CryptoCoin extends Equatable {
   const CryptoCoin({
@@ -7,7 +13,10 @@ class CryptoCoin extends Equatable {
     required this.details,
   });
 
+@HiveField(0) 
   final String name;
+
+@HiveField(1) 
   final CryptoCoinDetail details;
 
   @override
