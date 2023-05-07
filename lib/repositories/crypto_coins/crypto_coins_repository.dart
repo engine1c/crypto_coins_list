@@ -3,7 +3,7 @@ import 'package:crypto_coins_list/repositories/crypto_coins/crypto_coins.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:talker_flutter/talker_flutter.dart';
-
+//new auto_route
 class CryptoCoinsRepository implements AbstractCoinsRepository {
   CryptoCoinsRepository({
     required this.dio,
@@ -21,7 +21,7 @@ static const Duration  connectionTimeout = Duration (seconds: 3);
   
 );
 Dio dio = Dio(options); 
-//final Dio dio;
+
   final Box<CryptoCoin> cryptoCoinsBox;
   
   @override

@@ -33,7 +33,7 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Курсы криптовалют (v.noth)'),
+        title: const Text('Курсы криптовалют (v.noSQL)'),
         actions: [
           IconButton(
             onPressed: () {
